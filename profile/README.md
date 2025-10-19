@@ -24,7 +24,7 @@ Sentinel is built on a modern, event-driven architecture designed for high throu
 
 ### Architecture Diagram
 
-![Uploading Gemini_Generated_Image_i27tmsi27tmsi27t.png…]()
+<img width="1024" height="1024" alt="Gemini_Generated_Image_i27tmsi27tmsi27t" src="https://github.com/user-attachments/assets/ceeaf02f-2619-4f70-926c-29bc3b2dcb0a" />
 
 1.  **Camera Ingest:** A high-performance **Ingest Service** reads any number of RTSP streams. It uses YOLOv8 for real-time vehicle detection and tracking. When a unique vehicle is identified, it captures a high-resolution keyframe.
 2.  **Event-Driven Bus (Redis):** This keyframe is published as a "job" to a **Redis Stream**. This acts as a central, persistent message bus, ensuring no jobs are lost and decoupling capture from analysis.
@@ -59,8 +59,8 @@ The intelligence of Sentinel comes from a suite of custom-trained YOLOv8 models,
 * **AI & Computer Vision:** Python, YOLOv8 (PyTorch), OpenCV
 * **Backend & API:** FastAPI
 * **Message Bus & Caching:** Redis (Streams)
-* **Database:** Sharded SQL/NoSQL for horizontal scaling
-* **Frontend:** Modern JavaScript Framework (React/Vue/Svelte)
+* **Database:** Sharded SQL for horizontal scaling
+* **Frontend:** JavaScript Framework (NextJS)
 
 ## 6. Project Roadmap
 
@@ -71,3 +71,9 @@ The intelligence of Sentinel comes from a suite of custom-trained YOLOv8 models,
 * **Phase 2: Violation Detection Module**
     * **Status:** Pending
     * **Deliverables:** Integration of the `no-helmet` and `triple-riding` violation detection models into the main Sentinel platform.
+
+## 7. Authors
+
+- Arun Natarajan - [GitHub](https://github.com/arunnats)
+- Hafeez Muhammed - [GitHub](https://github.com/Hafeez-hm)
+- Aditya Kamble - [GitHub](https://github.com/27-aditya)
