@@ -23,36 +23,8 @@ By leveraging state-of-the-art computer vision and a high-throughput, distribute
 Sentinel is built on a modern, event-driven architecture designed for high throughput and fault tolerance. This design decouples tasks, allowing for independent scaling and processing.
 
 ### Architecture Diagram
-   ┌────────────┐
-   │  Camera    │
-   │ Ingest     │
-   │ (Process 1)│
-   └─────┬──────┘
-         │
-         ▼
-   ┌──────────────────┐
-   │ Redis Stream     │
-   │ "vehicle_jobs"   │
-   └─────┬──────┬─────┘
-         │      │      │
- ┌───────▼─┐  ┌─▼────────┐  ┌───────────┐  ┌─────────────┐
- │ OCR     │  │ Colour   │  │ Logo/Model│  │ Violation   │
- │ Worker  │  │ Worker   │  │ Worker    │  │ Worker      │
- │(Proc 2) │  │(Proc 3)  │  │(Proc 4)   │  │ (Proc 5)    │
- └───────┬─┘  └─┬────────┘  └───────┬───┘  └─────────┬───┘
-         │      │                   │                │
-         └──────┴───────────────────┴────────────────┘
-                       results
-                          │
-                          ▼
-                   ┌─────────────────────┐
-                   │ Aggregator + API    │
-                   │ (FastAPI Proc 6)    │
-                   │  - listens to       │
-                   │    "vehicle_results"│
-                   │  - writes DB        │
-                   │  - serves API       │
-                   └─────────────────────┘
+
+![Uploading Gemini_Generated_Image_i27tmsi27tmsi27t.png…]()
 
 1.  **Camera Ingest:** A high-performance **Ingest Service** reads any number of RTSP streams. It uses YOLOv8 for real-time vehicle detection and tracking. When a unique vehicle is identified, it captures a high-resolution keyframe.
 2.  **Event-Driven Bus (Redis):** This keyframe is published as a "job" to a **Redis Stream**. This acts as a central, persistent message bus, ensuring no jobs are lost and decoupling capture from analysis.
